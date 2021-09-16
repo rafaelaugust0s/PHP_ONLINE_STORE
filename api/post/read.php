@@ -34,14 +34,16 @@ if ($num > 0){
 
         'idbase_sku'=>$idbase_sku,
         'base_sku'=> $base_sku,
-        // 'specification' => $specification,
-        'product_type'=> $product_type,
-        'brand'=> $product_type,
+        //'product_type'=> $product_type,
+        'brand'=> $brand,
         'model'=> $model,
         'form_factor'=>$form_factor,
         'processor_type' =>$processor_type,
-        'created_at'=> $created_at,
-        'update_at' => $updated_at,
+        'specification' => $specification,
+        'cost' => $cost,
+        'front_picture_icons' => $front_picture_icons
+        // 'created_at'=> $created_at,
+        // 'updated_at' => $updated_at,
       );
 
       //push to DATA
@@ -52,9 +54,14 @@ if ($num > 0){
 
    echo json_encode($arr);
 }else{
- echo json_encode(
+ //echo json_encode(
 
-    array('message' => 'No Posts found')
+    array('message' => 'No Posts found'
  );
 
 }
+
+?>
+
+
+
