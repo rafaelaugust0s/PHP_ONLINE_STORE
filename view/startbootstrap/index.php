@@ -75,24 +75,60 @@ $result = ($query);
 
         <?php
 
-// $products= [
-//     '{
+// $products= '[
+//     {
 //         "brand" : "Dell",
 //         "model" :"3040",
 //         form_factor" : "Tower"
-//     }'
-// ];
-    $products = [];
-    $json = file_get_contents('http://localhost/php_online_store/api/post/read.php');
-    $data = json_decode ($json);
+//     },
+//     {
+//         "brand" : "Dell",
+//         "model" :"3040",
+//         form_factor" : "Monitor"
+//     }
     
-     //echo $json;
+// ]';
+// $productsJson = json_decode ($products);
+//     echo $productsJson[0]["brand"] ;
+
+//    foreach ($products as $product){
+//     echo $product[0] ;
+//    }
+
+
+
+    $products = [];
+    //$data = [];
+    
+    $json = file_get_contents('http://localhost/php_online_store/api/post/read.php');
+    $api = json_decode ($json);
+    array_push($products, $json );
+
+
+   // echo $json;
+   foreach ($products as $product){
+    echo $product[0]-> brand ;
+   }
+    
+    //  echo $products[2] -> brand;
+
+
+
+    //  function products () {
+    //      global $post_item;
+    //     include ('../../models/Read.php');
+    //     echo $post_item;
+    //  }
+
+    //  products();
+
+
 
 
 
    
     
-;
+
  ?>
         <!-- Section-->
         <section class="py-5">
@@ -113,11 +149,12 @@ $result = ($query);
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product brand-->
-                                    <h5 class="fw-bolder"> <?php echo htmlspecialchars ($product['idbase_sku']); ?>  </h5>
-                                    <h5 class="fw-bolder"> <?php echo htmlspecialchars ($product['']); ?> </h5>
+                                    <h5 class="fw-bolder"> <?php echo htmlspecialchars ($product['brand']); ?>  </h5>
+                                    <h5 class="fw-bolder"> <?php echo htmlspecialchars ($product['model']); ?> </h5>
                                     <h5 class="fw-bolder">form factor</h5>
                                     <h5 class="fw-bolder">procesor</h5>
                                     <h5 class="fw-bolder">specification</h5>
+                         
                                     
                                    
                                     <!-- Product price-->
