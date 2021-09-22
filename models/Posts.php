@@ -71,8 +71,32 @@ class Post {
 
          return $stmt;
 
-         //set properties
-         $row = $stmt->fetch (PDO::FETCH_ASSOC);
-         $this ->$front_picture_icons = $row ['front_picture_icons'];
+        
      }
+
+     // search data
+
+     public function Search () {
+
+        $button = $_GET ['submit'];
+        $search = $_GET ['search'];
+
+        //  $searchQuery =  'SELECT * FROM ' . $this->table . '  WHERE  MATCH (base_sku, product_type, brand, model, form_factor, processor_type ) AGAINST ('%" .$search. " %')' ;
+         
+         $searchQuery =  'SELECT * FROM  base_sku  WHERE  MATCH (base_sku, product_type, brand, model, form_factor, processor_type ) AGAINST ('%" .$search. " %')' ;
+
+
+       $stmt = $this->conn->prepare($searchQuery);
+    //     //execute
+
+
+        
+
+
+  
+        $stmt->execute();
+
+       return $stmt;
+               
+      }
 }

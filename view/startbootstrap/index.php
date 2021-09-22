@@ -1,12 +1,10 @@
-<!-- <?php
-include_once '../../models/Posts.php';
-$query= 'SELECT  base_sku.idbase_sku, base_sku.base_sku, base_sku.brand, base_sku.model, base_sku.form_factor, base_sku.processor_type, 
-extended_sku.specification,extended_sku.cost,extended_sku.front_picture_icons
-FROM base_sku
-INNER JOIN extended_sku ON base_sku.base_sku = extended_sku.base_sku';
-$result = ($query);
+<?php 
+    $products = file_get_contents('http://localhost/php_online_store/api/post/read.php');
+    $products = json_decode($products);
+    
 
-?> -->
+    ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +31,7 @@ $result = ($query);
                         <!-- Navigation-->
                         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
             <div class="container px-4 px-lg-5 ">
-                <a class="navbar-brand" href="#!"> CNB Computers<img src= "
+                <a class="navbar-brand " href="#!"> CNB Computers<img src= "
                 "></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -45,8 +43,11 @@ $result = ($query);
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#!">All Products</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                                <li><a class="dropdown-item" href="#!">Towers</a></li>
+                                <li><a class="dropdown-item" href="#!">Desktops</a></li>
+                                <li><a class="dropdown-item" href="#!">Combos</a></li>
+                                <li><a class="dropdown-item" href="#!">Monitors</a></li>
+
                             </ul>
                         </li>
                     </ul>
@@ -62,115 +63,115 @@ $result = ($query);
         </nav>
 
         <!-- Header-->
-        <header class="bg-dark py-5 ">
-    
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
+        <header class="py-5 expand">
+   
+            <div class="container px-4 px-lg-5 my-5" >
+            <div id="carouselExampleCaptions" class="carousel slide   " data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <img src="assets/green.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+            <h1 class= "display-4 fw-bolder">We are a green company</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+        </div>
+        </div>
+        <div class="carousel-item">
+        <img src="assets/yellow.png" class="d-block w-100 " alt="...">
+        <div class="carousel-caption d-none d-md-block">
+            <h1 class="display-4 fw-bolder">North America's leading provider Number of refurbisher IT equipment</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+        </div>
+        </div>
+        <div class="carousel-item">
+        <img src="assets/blue.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+            <h1 class= "display-4 fw-bolder">Best price. Best Quality and Best Service in the Market</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+        </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+        <!-- Search bar-->
+
+            <nav class=" navbar-expand-lg">
+                        <div class="container-fluid ">
+                            <form class="d-flex p-4" action= "search.php " method= "get">
+                            <input class="form-control input-lg " type="search" placeholder="What are you looking for?" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                            </div>
+                         </div>   
+                
+             </nav>
+
+
+            
+
+                <!-- <div class="text-center text-black">
                     <h1 class="display-4 fw-bolder"> ONLINE STORE</h1>
                     <p class="lead fw-normal text-white-50 mb-0">We are a green company</p>
                 </div>
             </div>
-        </header>
+        </header> -->
 
 
-        <?php
-
-// $products= '[
-//     {
-//         "brand" : "Dell",
-//         "model" :"3040",
-//         form_factor" : "Tower"
-//     },
-//     {
-//         "brand" : "Dell",
-//         "model" :"3040",
-//         form_factor" : "Monitor"
-//     }
-    
-// ]';
-// $productsJson = json_decode ($products);
-//     echo $productsJson[0]["brand"] ;
-
-//    foreach ($products as $product){
-//     echo $product[0] ;
-//    }
+        
 
 
-
-    $products = [];
-    //$data = [];
-    
-    $json = file_get_contents('http://localhost/php_online_store/api/post/read.php');
-    $api = json_decode ($json);
-    array_push($products, $json );
-
-
-   // echo $json;
-   foreach ($products as $product){
-    echo $product[0]-> brand ;
-   }
-    
-    //  echo $products[2] -> brand;
-
-
-
-    //  function products () {
-    //      global $post_item;
-    //     include ('../../models/Read.php');
-    //     echo $post_item;
-    //  }
-
-    //  products();
-
-
-
-
-
-   
-    
-
- ?>
         <!-- Section-->
-        <section class="py-5">
+        <section class="py-0">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-                        <?php foreach ($products as $product) { ?>
+                        <?php foreach($products-> data as $product):
+                                                //echo $product;
 
-                        
-
-
+                            ?>
+                    
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
                  
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src="<?php echo base64_encode($product-> $front_picture_icons)  ; ?>" alt="..." />
+                            
                             <!-- Product details-->
                             <div class="card-body p-4">
-                                <div class="text-center">
+                                <div class="text-left">
                                     <!-- Product brand-->
-                                    <h5 class="fw-bolder"> <?php echo htmlspecialchars ($product['brand']); ?>  </h5>
-                                    <h5 class="fw-bolder"> <?php echo htmlspecialchars ($product['model']); ?> </h5>
-                                    <h5 class="fw-bolder">form factor</h5>
-                                    <h5 class="fw-bolder">procesor</h5>
-                                    <h5 class="fw-bolder">specification</h5>
-                         
-                                    
-                                   
+                                    <h5 class="fw-bolder"> <?php echo $product-> brand  ; ?>  </h5>
+                                    <h5 class="fw-normal"> <?php echo $product -> form_factor ; ?>  </h5>
+                                    <h5 class="fw-normal"> <?php echo $product-> processor_type ; ?>  </h5>
+                                    <!-- <h5 class="fw-normal"> <?php echo $product-> specification ; ?>  </h5> -->
+
                                     <!-- Product price-->
-                                    $
+                                 <h5 class="fw-normal"> $ <?php  echo $product -> cost  ; ?>  </h5>
+
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add To Cart</a></div>
                             </div>
                         </div>
                       
                         
                     </div>
 
-                    <?php } ?>
+                    <?php endforeach; ?>
 
                     <div class="col mb-5">
                         <div class="card h-100">

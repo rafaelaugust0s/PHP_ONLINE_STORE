@@ -4432,7 +4432,7 @@ textarea.form-control-lg {
 }
 
 .navbar-light .navbar-brand {
-  color: rgba(247, 242, 242, 0.9) !important;
+  color: rgba(12, 0, 0, 0.9) !important;
 }
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
   color: rgba(0, 0, 0, 0.9);
@@ -11273,3 +11273,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* .carousel-inner{
+ height: 5px !important;
+} */
