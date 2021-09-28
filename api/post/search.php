@@ -16,40 +16,50 @@ $db = $dataBase->connect();
 
 $post = new Post($db);
 
-
-
-// get values
-
-$post->idbase_sku = isset($_GET['idbase_sku'])? $_GET['idbase_sku'] : die();
- 
 //Post query
- $post->Search();
+$result= $post->Search();
+//get row count
 
-      $post_array = array(
+$num = $result->rowCount();
 
-        'idbase_sku'=> $post-> idbase_sku,
-        'base_sku'=> $post -> base_sku,
+
+
+if ($num > 0){
+ $arr = array();
+ $arr ['data'] = array();
+
+ while( $row = $result->fetch(PDO::FETCH_ASSOC)){
+      extract($row);
+
+      $post_item = array(
+
+
+        'idbase_sku'=>$idbase_sku,
+        'base_sku'=> $base_sku,
         //'product_type'=> $product_type,
-        'brand'=> $post -> brand ,
-        'model'=> $post -> model,
-        'form_factor'=> $post -> form_factor,
-        'processor_type' => $post ->processor_type,
-        'specification' => $post-> specification,
-        'cost' => $post ->cost,
-        'front_picture_icons' => $post ->front_picture_icons
+        'brand'=> $brand,
+        'model'=> $model,
+        'form_factor'=>$form_factor,
+        'processor_type' =>$processor_type,
+        'specification' => $specification,
+        'cost' => $cost,
+        'front_picture_icons' => $front_picture_icons
         // 'created_at'=> $created_at,
         // 'updated_at' => $updated_at,
       );
 
-  
+      //push to DATA
+
+      array_push($arr['data'], $post_item); 
+ }
    // turn to json
 
-   print_r (json_encode($post_array));
-// }else{
-//  echo json_encode(
+   echo json_encode($arr);
+}else{
+ //echo json_encode(
 
-//     array('message' => 'No Posts found'
-//  );
+    array('message' => 'No Posts found'
+ );
 
-// }
- 
+}
+

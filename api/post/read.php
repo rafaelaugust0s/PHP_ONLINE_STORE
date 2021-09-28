@@ -41,7 +41,14 @@ if ($num > 0){
         'processor_type' =>$processor_type,
         'specification' => $specification,
         'cost' => $cost,
-        'front_picture_icons' => $front_picture_icons
+        'front_picture_icons' => $front_picture_icons,
+        'front_picture' => $front_picture,
+        'back_picture' => $back_picture,
+        'left_picture' => $left_picture,
+        'right_picture' => $right_picture,
+        'back_and_front_picture' => $back_and_front_picture
+
+
         // 'created_at'=> $created_at,
         // 'updated_at' => $updated_at,
       );
