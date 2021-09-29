@@ -163,14 +163,14 @@ $rows = [];
                         <div class="card h-100 p-2 ">
                             <!-- Product image-->
                  
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#reg-modal" onClick= "showModal(<?php echo $idbase_sku ;?>)" >
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#reg-modal" onClick="showModal(<?php echo $product->idbase_sku ;?>)" >
                              <img  class="card-img-top   " src="<?php echo $product-> front_picture_icons ; ?>" alt="..."> </a>
                             
                             <!-- Product details-->
                             <div class="card-body ">
                                 <div class="text-left">
                                     <!-- Product brand-->
-                                    <h5 class="fw-bolder" id= "<?php echo $product-> brand.$idbase_sku ?> "> <?php echo $product-> brand ." ". $product-> model  ; ?>  </h5>
+                                    <h5 class="fw-bolder" id = "<?php echo $product->brand.$product->idbase_sku ?> "> <?php echo $product-> brand ." ". $product-> model  ; ?>  </h5>
                                     <h5 class="fw-normal"> <?php echo $product -> form_factor ; ?>  </h5>
                                     <h5 class="fw-normal"> <?php echo $product-> processor_type ; ?>  </h5>
                                     <p class="fw-normal"> <?php echo $product-> specification ; ?>  </p> 
@@ -202,7 +202,7 @@ $rows = [];
                                
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h5 class="modal-title fw-bolder" id="brand"><?php echo $product-> brand ." ". $product-> model  ; ?></h5>
+                                    <h5 class="modal-title fw-bolder" > <?php echo $product-> brand ." ". $product-> model  ; ?>   </h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                  </div>
                                   <div class="modal-body">
@@ -210,21 +210,21 @@ $rows = [];
 
                                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                            <img src="<?php echo $product-> front_picture_icons  ; ?>" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                            <img src="<?php echo $product-> front_picture  ; ?>" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                            <img src="<?php echo $product-> back_picture  ; ?>" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                            <img src="<?php echo $product-> left_picture  ; ?>" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                            <img src="<?php echo $product-> right_picture  ; ?>" class="d-block w-100" alt="...">
-                                            </div>
+                                                <div class="carousel-item active">
+                                                <img src="<?php echo $product-> front_picture_icons  ; ?>" class="d-block w-100" alt="...">
+                                                </div>
+                                                        <div class="carousel-item">
+                                                        <img src="<?php echo $product-> front_picture  ; ?>" class="d-block w-100" alt="...">
+                                                        </div>
+                                                                    <div class="carousel-item">
+                                                                    <img src="<?php echo $product-> back_picture  ; ?>" class="d-block w-100" alt="...">
+                                                                    </div>
+                                                        <div class="carousel-item">
+                                                        <img src="<?php echo $product-> left_picture  ; ?>" class="d-block w-100" alt="...">
+                                                        </div>
+                                                <div class="carousel-item">
+                                                <img src="<?php echo $product-> right_picture  ; ?>" class="d-block w-100" alt="...">
+                                                </div>
                                         <div class="carousel-item">
                                             <img src="<?php echo $product-> back_and_front_picture  ; ?>" class="d-block w-100" alt="..."> 
                                             </div>
@@ -243,13 +243,13 @@ $rows = [];
                                      </div>
                                       <h5 class= "fw-bolder p-3"> Key Features</h5>
                                       <ul class = " text-left fw-normal"> 
-                                            <li> </li>
-                                            <li> hi</li>
-                                            <li> hi</li>
-                                            <li> hi</li>
-                                            <li> hi</li>
-                                            <li> hi</li>
-                                            <li> hi</li>
+                                            <li> Processor <?php echo  $product-> processor_type .", ". $product-> generation ." generation, speed ". $product->processor_speed .", socket ". $product->processor_socket ; ?>  </li>
+                                            <li> Memory <?php echo $product->memory .", speed ". $product->memory_speed .", ". $product->memory_type   ; ?> </li>
+                                            <li> Storage <?php echo $product->storage_type ."  ". $product->storage      ; ?></li>
+                                            <li> Operating System <?php echo $product->operating_system ;?> </li>
+                                            <li> Ports <?php echo "USB 3.0: ". $product->usb_3_0 ."/ USB 2.0: ".$product->usb_2_0."/ <br>  VGA: ".$product->vga_ports ."/ DISPLAY: ". $product-> display_ports ."/ DVI: ". $product-> dvi_port ."/ <br> HDMI: ". $product-> hdmi_ports ;?> </li>
+                                            <li> Graphics <?php echo $product-> graphics_processors ;  ?></li>
+                                            <li> Optical Drive <?php echo $product->optical_drive ." ".$product->optical_drive_type ;  ?> </li>
 
                                         </ul>
 
@@ -267,9 +267,12 @@ $rows = [];
                       </div>
                    
                  <script>
-                     function showModal($idbase_sku){
+                     function showModal(idbase_sku){
+                            console.log(idbase_sku);
+                           // $("#brand").text($("#brand"+id).text());
+                            $("#brand").text($("#brand" + idbase_sku).text());
+
                             
-                            $("#brand").text($("#brand"+ $idbase_sku).text());
                      }
 
                  </script>                   

@@ -22,6 +22,31 @@ class Post {
     public $left_picture;
     public $right_picture;
     public $back_and_front_picture;
+    public $generation;
+    public $processor_speed;
+    public $processor_socket;
+    public $memory;
+    public $memory_speed;
+    public $memory_type;
+    public $storage;
+    public $storage_type;
+    public $operating_system;
+    public $usb_3_0;
+    public $usb_2_0;
+    public $vga_ports;
+    public $display_ports;
+    public $dvi_port;
+    public $hdmi_ports;
+    public $graphics_processors;
+    public $optical_drive;
+    public $optical_drive_type;
+
+
+
+    
+
+
+
 
 
     public $created_at;
@@ -43,7 +68,11 @@ class Post {
 
         $query = 'SELECT   base_sku.idbase_sku, base_sku.base_sku, base_sku.brand, base_sku.model, base_sku.form_factor, base_sku.processor_type,
         extended_sku.specification,extended_sku.cost,extended_sku.front_picture_icons, extended_sku.front_picture,
-         extended_sku.back_picture, extended_sku.left_picture,extended_sku.right_picture,extended_sku.back_and_front_picture
+         extended_sku.back_picture, extended_sku.left_picture,extended_sku.right_picture,extended_sku.back_and_front_picture, extended_sku.generation,
+         extended_sku.processor_speed,  extended_sku.processor_socket, extended_sku.memory,extended_sku.memory_speed,extended_sku.memory_type, 
+         extended_sku.storage,extended_sku.storage_type, extended_sku.operating_system, extended_sku.usb_3_0, extended_sku.usb_2_0, extended_sku.vga_ports,
+         extended_sku.display_ports,  extended_sku.dvi_port, extended_sku.hdmi_ports,extended_sku.graphics_processors, extended_sku.optical_drive, extended_sku.optical_drive_type
+         
         
         FROM  ' . $this->table . '
         INNER JOIN extended_sku 

@@ -46,7 +46,30 @@ if ($num > 0){
         'back_picture' => $back_picture,
         'left_picture' => $left_picture,
         'right_picture' => $right_picture,
-        'back_and_front_picture' => $back_and_front_picture
+        'back_and_front_picture' => $back_and_front_picture,
+        'generation' => $generation,
+        'processor_speed' => $processor_speed,
+        'processor_socket' => $processor_socket,
+        'memory' => $memory,
+        'memory_speed' => $memory_speed,
+        'memory_type' => $memory_type,
+        'storage' => $storage,
+        'storage_type' => $storage_type,
+        'operating_system' => $operating_system,
+        'usb_3_0' => $usb_3_0,
+        'usb_2_0' => $usb_2_0,
+        'vga_ports' => $vga_ports,
+        'display_ports' => $display_ports,
+        'dvi_port' => $dvi_port,
+        'hdmi_ports' => $hdmi_ports,
+        'graphics_processors' => $graphics_processors,
+        'optical_drive' => $optical_drive,
+        'optical_drive_type' => $optical_drive_type
+
+
+
+
+
 
 
         // 'created_at'=> $created_at,
