@@ -64,9 +64,12 @@ if ($num > 0){
         'hdmi_ports' => $hdmi_ports,
         'graphics_processors' => $graphics_processors,
         'optical_drive' => $optical_drive,
-        'optical_drive_type' => $optical_drive_type
-
-
+        'optical_drive_type' => $optical_drive_type,
+        'width' => $width,
+        'depth' => $depth,
+        'height' => $height,
+        'weight' => $weight,
+        'warranty'=> $warranty
 
 
 

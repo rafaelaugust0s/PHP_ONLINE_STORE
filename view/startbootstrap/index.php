@@ -170,7 +170,7 @@ $rows = [];
                             <div class="card-body ">
                                 <div class="text-left">
                                     <!-- Product brand-->
-                                    <h5 class="fw-bolder" id = "<?php echo $product->brand.$product->idbase_sku ?> "> <?php echo $product-> brand ." ". $product-> model  ; ?>  </h5>
+                                    <h5 class="fw-bolder"  > <?php echo $product-> brand ." ". $product-> model  ; ?>  </h5>
                                     <h5 class="fw-normal"> <?php echo $product -> form_factor ; ?>  </h5>
                                     <h5 class="fw-normal"> <?php echo $product-> processor_type ; ?>  </h5>
                                     <p class="fw-normal"> <?php echo $product-> specification ; ?>  </p> 
@@ -182,7 +182,8 @@ $rows = [];
                               </div>
                                  <!-- Product actions-->
                                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" data-bs-toggle="modal" data-bs-target="#reg-modal">More Details</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" data-bs-toggle="modal" 
+                                data-bs-target="#reg-modal"  id= "<?php echo $product -> brand; ?> " onclick= "showModal(this);">More Details</a></div>
                                </div>
 
 
@@ -202,7 +203,7 @@ $rows = [];
                                
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h5 class="modal-title fw-bolder" > <?php echo $product-> brand ." ". $product-> model  ; ?>   </h5>
+                                    <h5 class="modal-title fw-bolder" id="brand" >    </h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                  </div>
                                   <div class="modal-body">
@@ -248,8 +249,12 @@ $rows = [];
                                             <li> Storage <?php echo $product->storage_type ."  ". $product->storage      ; ?></li>
                                             <li> Operating System <?php echo $product->operating_system ;?> </li>
                                             <li> Ports <?php echo "USB 3.0: ". $product->usb_3_0 ."/ USB 2.0: ".$product->usb_2_0."/ <br>  VGA: ".$product->vga_ports ."/ DISPLAY: ". $product-> display_ports ."/ DVI: ". $product-> dvi_port ."/ <br> HDMI: ". $product-> hdmi_ports ;?> </li>
-                                            <li> Graphics <?php echo $product-> graphics_processors ;  ?></li>
+                                            <li> Graphics <?php echo $product->graphics_processors ;  ?></li>
                                             <li> Optical Drive <?php echo $product->optical_drive ." ".$product->optical_drive_type ;  ?> </li>
+                                            <li> Dimensions <?php echo $product -> width ." ". $product->depth ." ". $product->height ; ?> </li> 
+                                            <li> Weight <?php echo  $product->weight ?></li>
+                                            <li> Warranty <?php echo  $product->warranty ?></li>
+
 
                                         </ul>
 
@@ -267,10 +272,34 @@ $rows = [];
                       </div>
                    
                  <script>
-                     function showModal(idbase_sku){
-                            console.log(idbase_sku);
-                           // $("#brand").text($("#brand"+id).text());
-                            $("#brand").text($("#brand" + idbase_sku).text());
+
+                  
+
+                     function showModal(button){
+
+                         var brand = button.id;
+
+                         var products = <?php echo json_encode ($products); ?>
+
+                            //  for ( let i = 0; i < products.length; i++) {
+
+                            //     var product = products[i];
+
+                            //     console.log(products.data[i].brand);
+
+                            //  }
+
+                             $("#brand").text(products.data[0].brand).text(products.data[0].model);
+                              $("#brand").text(products.data[50].);
+
+
+                             console.log(products)
+
+
+                        
+                        //     console.log(idbase_sku);
+                        //    // $("#brand").text($("#brand"+id).text());
+                        //     $("#brand").text($("#brand" + idbase_sku).text());
 
                             
                      }

@@ -40,14 +40,11 @@ class Post {
     public $graphics_processors;
     public $optical_drive;
     public $optical_drive_type;
-
-
-
-    
-
-
-
-
+    public $width;
+    public $depth;
+    public $height;
+    public $weight;
+    public $warranty;
 
     public $created_at;
     public $updated_at;
@@ -62,8 +59,6 @@ class Post {
      public function read(){
 
         //create query
-
-
      // $query = 'SELECT * FROM ' . $this->table . ' ';
 
         $query = 'SELECT   base_sku.idbase_sku, base_sku.base_sku, base_sku.brand, base_sku.model, base_sku.form_factor, base_sku.processor_type,
@@ -71,7 +66,8 @@ class Post {
          extended_sku.back_picture, extended_sku.left_picture,extended_sku.right_picture,extended_sku.back_and_front_picture, extended_sku.generation,
          extended_sku.processor_speed,  extended_sku.processor_socket, extended_sku.memory,extended_sku.memory_speed,extended_sku.memory_type, 
          extended_sku.storage,extended_sku.storage_type, extended_sku.operating_system, extended_sku.usb_3_0, extended_sku.usb_2_0, extended_sku.vga_ports,
-         extended_sku.display_ports,  extended_sku.dvi_port, extended_sku.hdmi_ports,extended_sku.graphics_processors, extended_sku.optical_drive, extended_sku.optical_drive_type
+         extended_sku.display_ports, extended_sku.dvi_port, extended_sku.hdmi_ports, extended_sku.graphics_processors, extended_sku.optical_drive, extended_sku.optical_drive_type,
+         extended_sku.width, extended_sku.depth, extended_sku.height, extended_sku.weight, extended_sku.warranty
          
         
         FROM  ' . $this->table . '
