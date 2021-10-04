@@ -1,4 +1,4 @@
-<!-- <?php
+ <?php
 
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
@@ -22,6 +22,8 @@ $result= $post->Search();
 
 $num = $result->rowCount();
 
+echo $num;
+
 
 
 if ($num > 0){
@@ -41,18 +43,19 @@ if ($num > 0){
         'model'=> $model,
         'form_factor'=>$form_factor,
         'processor_type' =>$processor_type,
-        'specification' => $specification,
-        'cost' => $cost,
-        'front_picture_icons' => $front_picture_icons
+        // 'specification' => $specification,
+        // 'cost' => $cost,
+        // 'front_picture_icons' => $front_picture_icons
         // 'created_at'=> $created_at,
         // 'updated_at' => $updated_at,
       );
 
-      //push to DATA
+      
+//       //push to DATA
 
-      array_push($arr['data'], $post_item); 
- }
-   // turn to json
+       array_push($arr['data'], $post_item); 
+  }
+//    // turn to json
 
    echo json_encode($arr);
 }else{
@@ -61,5 +64,5 @@ if ($num > 0){
     array('message' => 'No Posts found'
  );
 
-}
- -->
+ }
+//  -->

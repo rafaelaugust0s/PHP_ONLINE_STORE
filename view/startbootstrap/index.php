@@ -2,7 +2,8 @@
     $products = file_get_contents('http://localhost/php_online_store/api/post/read.php');
     $products = json_decode($products);
     
-$rows = [];
+;
+
     ?>
 
 
@@ -120,25 +121,31 @@ $rows = [];
                          </div>   
                 
              </nav>
-<!-- 
+
              <?php
+             
 
-                if (isset($_GET['search'])){
 
-                    require "";
-                }
 
-                if (count($rows) > 0){
 
-                    foreach ($rows as $row){
-                        print_r($row);
-                    }
-                }else { echo "No results found"; 
-                }
+
+
+                // if (isset($_GET['search'])){
+
+                //     require "";
+                // }
+
+                // if (count($rows) > 0){
+
+                //     foreach ($rows as $row){
+                //         print_r($row);
+                //     }
+                // }else { echo "No results found"; 
+                // }
 
                
 
-             ?> -->
+             ?>
 
 
                 <!-- <div class="text-center text-black">
@@ -163,7 +170,7 @@ $rows = [];
                         <div class="card h-100 p-2 ">
                             <!-- Product image-->
                  
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#reg-modal" onClick="showModal(<?php echo $product->idbase_sku ;?>)" >
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#reg-modal" onClick="showModal();" >
                              <img  class="card-img-top   " src="<?php echo $product-> front_picture_icons ; ?>" alt="..."> </a>
                             
                             <!-- Product details-->
@@ -183,14 +190,11 @@ $rows = [];
                                  <!-- Product actions-->
                                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" data-bs-toggle="modal" 
-                                data-bs-target="#reg-modal"  id= "<?php echo $product -> brand; ?> " onclick= "showModal(this);">More Details</a></div>
+                                data-bs-target="#reg-modal"  id= "<?php echo  $product->brand ." ". $product->model ?> " onclick= "showModal(this);">More Details</a></div>
                                </div>
-
-
                                 
                          </div>
-                       
-                        
+    
                     </div>
         
                     <?php endforeach; ?>
@@ -204,6 +208,9 @@ $rows = [];
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <h5 class="modal-title fw-bolder" id="brand" >    </h5>
+                                    <h5 class="modal-title fw-bolder" id="model" >    </h5>
+
+
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                  </div>
                                   <div class="modal-body">
@@ -244,7 +251,7 @@ $rows = [];
                                      </div>
                                       <h5 class= "fw-bolder p-3"> Key Features</h5>
                                       <ul class = " text-left fw-normal"> 
-                                            <li> Processor <?php echo  $product-> processor_type .", ". $product-> generation ." generation, speed ". $product->processor_speed .", socket ". $product->processor_socket ; ?>  </li>
+                                            <li > Processor <?php echo  $product-> processor_type .", ". $product-> generation ." generation, speed ". $product->processor_speed .", socket ". $product->processor_socket ; ?>  </li>
                                             <li> Memory <?php echo $product->memory .", speed ". $product->memory_speed .", ". $product->memory_type   ; ?> </li>
                                             <li> Storage <?php echo $product->storage_type ."  ". $product->storage      ; ?></li>
                                             <li> Operating System <?php echo $product->operating_system ;?> </li>
@@ -277,23 +284,42 @@ $rows = [];
 
                      function showModal(button){
 
-                         var brand = button.id;
+                         var product = button.id;
+                       
 
-                         var products = <?php echo json_encode ($products); ?>
+                          var products = <?php echo json_encode ($products); ?>
 
-                            //  for ( let i = 0; i < products.length; i++) {
+                         console.log(product);
+                        //  console.log(products.data.map(function(items){
+                        //      return  items.brand
+                        //     //   $("#model").text(items.model)
+                               $("#brand").text(product)
+                               $("#brand").text(product)
 
-                            //     var product = products[i];
+                             
 
-                            //     console.log(products.data[i].brand);
+                            
+                            
 
-                            //  }
+                        //  }));
 
-                             $("#brand").text(products.data[0].brand).text(products.data[0].model);
-                              $("#brand").text(products.data[50].);
+                         
+
+                         $("#brand").text(product.brand);
+                      
+
+                        //   for(let i = 0; len=items.length, i < len; i++){
+
+                        //       $ ("#brand").text(items[i].brand);
+                        //   }
+                         
 
 
-                             console.log(products)
+                            // $("#brand").text(products.data[i]);    
+                            //  $("#brand").text(products.data[0].brand).text(products.data[0].idbase_sku);
+
+
+                            //  console.log(products)
 
 
                         
