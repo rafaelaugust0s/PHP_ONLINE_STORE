@@ -125,11 +125,6 @@
              <?php
              
 
-
-
-
-
-
                 // if (isset($_GET['search'])){
 
                 //     require "";
@@ -189,25 +184,29 @@
                               </div>
                                  <!-- Product actions-->
                                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" data-bs-toggle="modal" 
-                                data-bs-target="#reg-modal"  id= "<?php echo  $product->brand ." ". $product->model ?> " onclick= "showModal(this);">More Details</a></div>
+                                <div class="text-center">
+                                    <a class="btn btn-outline-dark mt-auto" data-bs-toggle="modal" 
+                                 
+                                idbase_sku="<?php echo $product->idbase_sku?>"
+
+                                model="<?php echo $product-> model?>"
+                                brand="<?php echo $product-> brand?>"
+                                processor_type="<?php echo $product-> processor_type?>"
+
+                                data-bs-target="#reg-modal"  id="<?php echo $product-> processor_type  ;?> " onclick= "showModal(this);">More Details</a></div>
                                </div>
                                 
-                         </div>
-    
-                    </div>
-        
-                    <?php endforeach; ?>
 
-             <!--Modal-->
+
+    <!--Modal-->
                           
-             <div class="modal" id= "reg-modal" tabindex="-1">
+    <div class="modal" id= "reg-modal" tabindex="-1">
                              
                              <div class="modal-dialog">
                                
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h5 class="modal-title fw-bolder" id="brand" >    </h5>
+                                    <h5 class="modal-title fw-bolder" id="brand" >     </h5>
                                     <h5 class="modal-title fw-bolder" id="model" >    </h5>
 
 
@@ -251,7 +250,7 @@
                                      </div>
                                       <h5 class= "fw-bolder p-3"> Key Features</h5>
                                       <ul class = " text-left fw-normal"> 
-                                            <li > Processor <?php echo  $product-> processor_type .", ". $product-> generation ." generation, speed ". $product->processor_speed .", socket ". $product->processor_socket ; ?>  </li>
+                                            <li id="processor"> Processor <?php echo  $product-> processor_type .", ". $product-> generation ." generation, speed ". $product->processor_speed .", socket ". $product->processor_socket ; ?>  </li>
                                             <li> Memory <?php echo $product->memory .", speed ". $product->memory_speed .", ". $product->memory_type   ; ?> </li>
                                             <li> Storage <?php echo $product->storage_type ."  ". $product->storage      ; ?></li>
                                             <li> Operating System <?php echo $product->operating_system ;?> </li>
@@ -272,29 +271,35 @@
                                     
                                     </div>
 
-                             </div>
-                            
-                          </div>
-                         
-                      </div>
-                   
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <!-- end of modal -->
+                         </div>
+    
+                    </div>
+
+                    <?php endforeach; ?>
+
                  <script>
 
-                  
+            
+                     function showModal(product){
 
-                     function showModal(button){
+                                              
 
-                         var product = button.id;
-                       
+                        //   var products = <?php echo json_encode ($products); ?>
 
-                          var products = <?php echo json_encode ($products); ?>
-
-                         console.log(product);
+                        console.log(product);
                         //  console.log(products.data.map(function(items){
                         //      return  items.brand
                         //     //   $("#model").text(items.model)
-                               $("#brand").text(product)
-                               $("#brand").text(product)
+                               $("#brand").text(product.id);
+                               $("#model").text(product.model);
+                               $("#processor").text(product.processor_type);
+
 
                              
 
