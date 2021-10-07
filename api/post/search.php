@@ -16,16 +16,17 @@ $db = $dataBase->connect();
 
 $post = new Post($db);
 
-
 //get search
 $post->search = isset($_GET['search']) ? $_GET['search'] : die();
 //Post query
 $result= $post->Search();
 // //get row count
-// $num = $result->rowCount();
-// echo $num;
+$num = $result->rowCount();
+echo $num;
 
 
+while( $row = $result->fetch(PDO::FETCH_ASSOC)){
+    extract($row);
 //create array
 
 $post_array = array(
@@ -38,11 +39,7 @@ $post_array = array(
     'model'=> $model,
     'form_factor'=>$form_factor,
 
-        //   'idbase_sku' => $post-> idbase_sku, 
-        //   'base_sku' => $post -> base_sku,   
-        //   'brand' => $post->brand,     
-        //   'model' => $post->model,   
-        //   'form_factor'=> $post->form_factor,
+ 
 
 
 );
@@ -50,6 +47,6 @@ $post_array = array(
 //Make json
 
 print_r(json_encode($post_array));
-      
+}     
 
  

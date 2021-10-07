@@ -93,16 +93,11 @@ class Post {
 
      public function Search(){
 
-            //   $search = " ";
+           //    $search = " ";
 
-         $searchQuery =  'SELECT * FROM ' . $this->table . ' WHERE brand LIKE "%search%" ' ;
+         $searchQuery =  'SELECT * FROM ' . $this->table . ' WHERE brand LIKE "%dell%" OR brand LIKE "%hp%" ';
 
-
-        
-
-      
-      
-      $stmt = $this->conn->prepare($searchQuery);
+          $stmt = $this->conn->prepare($searchQuery);
 
 //        //bind id
 
@@ -112,7 +107,7 @@ class Post {
 
     $stmt -> execute();
 
-     return $stmt;
+      return $stmt;
 
       
     //$row = $stmt ->fetch(PDO::FETCH_ASSOC);
@@ -135,4 +130,40 @@ class Post {
 
                
       }
+
+      public function pages(){
+        //create query
+     // $query = 'SELECT * FROM ' . $this->table . ' ';
+
+        $query = 'SELECT   base_sku.idbase_sku, base_sku.base_sku, base_sku.brand, base_sku.model, base_sku.form_factor, base_sku.processor_type,
+        extended_sku.specification,extended_sku.cost,extended_sku.front_picture_icons, extended_sku.front_picture,
+         extended_sku.back_picture, extended_sku.left_picture,extended_sku.right_picture,extended_sku.back_and_front_picture, extended_sku.generation,
+         extended_sku.processor_speed,  extended_sku.processor_socket, extended_sku.memory,extended_sku.memory_speed,extended_sku.memory_type, 
+         extended_sku.storage,extended_sku.storage_type, extended_sku.operating_system, extended_sku.usb_3_0, extended_sku.usb_2_0, extended_sku.vga_ports,
+         extended_sku.display_ports, extended_sku.dvi_port, extended_sku.hdmi_ports, extended_sku.graphics_processors, extended_sku.optical_drive, extended_sku.optical_drive_type,
+         extended_sku.width, extended_sku.depth, extended_sku.height, extended_sku.weight, extended_sku.warranty
+         
+        
+        FROM  ' . $this->table . '
+        INNER JOIN extended_sku 
+        ON base_sku.base_sku = extended_sku.base_sku LIMIT 0,10';
+        
+        
+
+      
+
+        /// prepare statement
+        $stmt = $this->conn->prepare($query);
+         //execute
+
+         $stmt->execute();
+
+         return $stmt;
+
+        
+     }
+
+
+
+
 }

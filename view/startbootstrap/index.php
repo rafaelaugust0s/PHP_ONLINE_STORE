@@ -67,7 +67,7 @@
         </nav>
 
         <!-- Header-->
-        <header class="py-5 expand">
+        <header class="py- expand">
    
             <div class="container px-4 px-lg-5 my-5" >
             <div id="carouselExampleCaptions" class="carousel slide   " data-bs-ride="carousel">
@@ -112,10 +112,10 @@
         <!-- Search bar-->
 
             <nav class=" navbar-expand-lg">
-                        <div class="container-fluid ">
-                            <form class="d-flex p-4" action= "index.php " method= "get">
-                            <input class="form-control input-lg " name = "search " type="search" placeholder="What are you looking for?" aria-label="Search" required>
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        <div class="container-fluid  ">
+                            <form class="d-flex " action= "index.php " method= "get">
+                            <input class="form-control input-lg p-4 m-2  " name = "search " type="search" placeholder="What are you looking for?" aria-label="Search" required>
+                            <button class="btn btn-outline-secondary btn-lg m-2 " type="submit">Search</button>
                             </form>
                             </div>
                          </div>   
@@ -124,10 +124,10 @@
 
              <?php
              
-
+                    $items = file_get_contents("http://localhost/PHP_online_store/api/post/search.php?search");
                 // if (isset($_GET['search'])){
 
-                //     require "";
+                   
                 // }
 
                 // if (count($rows) > 0){
@@ -152,7 +152,7 @@
 
 
         <!-- Section-->
-        <section class="py-5">
+        <section class="py-">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
@@ -165,7 +165,7 @@
                         <div class="card h-100 p-2 ">
                             <!-- Product image-->
                  
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#reg-modal" onClick="showModal();" >
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#reg-modal" id= "<?php echo json_encode($products) ;?> " onClick="showModal(this);" >
                              <img  class="card-img-top   " src="<?php echo $product-> front_picture_icons ; ?>" alt="..."> </a>
                             
                             <!-- Product details-->
@@ -185,15 +185,16 @@
                                  <!-- Product actions-->
                                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto" data-bs-toggle="modal" 
+                                    <a class="btn btn-outline-secondary mt-auto" data-bs-toggle="modal" 
                                  
                                 idbase_sku="<?php echo $product->idbase_sku?>"
-
+                                base_sku="<?php echo $product->base_sku?>"
                                 model="<?php echo $product-> model?>"
                                 brand="<?php echo $product-> brand?>"
                                 processor_type="<?php echo $product-> processor_type?>"
+                                front_picture_icons = "<?php echo $product-> front_picture_icons  ?>"
 
-                                data-bs-target="#reg-modal"  id="<?php echo $product-> processor_type  ;?> " onclick= "showModal(this);">More Details</a></div>
+                                data-bs-target="#reg-modal"  id= "<?php echo $product-> brand ." ". $product->model." ". $product->processor_type ; ?> " onclick= "showModal(this);">More Details</a></div>
                                </div>
                                 
 
@@ -206,8 +207,7 @@
                                
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h5 class="modal-title fw-bolder" id="brand" >     </h5>
-                                    <h5 class="modal-title fw-bolder" id="model" >    </h5>
+                                    <h5 class="modal-title fw-bolder" id="brand" > </h5>
 
 
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -218,7 +218,7 @@
                                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                                         <div class="carousel-inner">
                                                 <div class="carousel-item active">
-                                                <img src="<?php echo $product-> front_picture_icons  ; ?>" class="d-block w-100" alt="...">
+                                                <img id= " picture1" src="<?php echo $product-> front_picture_icons  ; ?>" class="d-block w-100" alt="...">
                                                 </div>
                                                         <div class="carousel-item">
                                                         <img src="<?php echo $product-> front_picture  ; ?>" class="d-block w-100" alt="...">
@@ -256,8 +256,8 @@
                                             <li> Operating System <?php echo $product->operating_system ;?> </li>
                                             <li> Ports <?php echo "USB 3.0: ". $product->usb_3_0 ."/ USB 2.0: ".$product->usb_2_0."/ <br>  VGA: ".$product->vga_ports ."/ DISPLAY: ". $product-> display_ports ."/ DVI: ". $product-> dvi_port ."/ <br> HDMI: ". $product-> hdmi_ports ;?> </li>
                                             <li> Graphics <?php echo $product->graphics_processors ;  ?></li>
-                                            <li> Optical Drive <?php echo $product->optical_drive ." ".$product->optical_drive_type ;  ?> </li>
-                                            <li> Dimensions <?php echo $product -> width ." ". $product->depth ." ". $product->height ; ?> </li> 
+                                            <li> Optical Drive <?php echo $product->optical_drive_type ;  ?> </li>
+                                            <li> Dimensions<?php echo " (W) ". $product -> width . " (D) ". $product->depth . " (H) ". $product->height ; ?> </li> 
                                             <li> Weight <?php echo  $product->weight ?></li>
                                             <li> Warranty <?php echo  $product->warranty ?></li>
 
@@ -288,29 +288,28 @@
             
                      function showModal(product){
 
-                                              
+                                        
+                            console.log(product);
+                             $("#brand").text(product.id);
+                             $("#brand").text(product.id);
+                             $("#processor").text(product.id.processor_type);
+
+
+
 
                         //   var products = <?php echo json_encode ($products); ?>
 
-                        console.log(product);
+                        // console.log(product);
                         //  console.log(products.data.map(function(items){
                         //      return  items.brand
-                        //     //   $("#model").text(items.model)
-                               $("#brand").text(product.id);
-                               $("#model").text(product.model);
-                               $("#processor").text(product.processor_type);
-
-
-                             
-
-                            
-                            
+                               //$("#brand").text(JSON.stringify(product));
+                              // $("#model").text(product.model);
+                                //$("#processor").text(product.id)
 
                         //  }));
 
                          
-
-                         $("#brand").text(product.brand);
+                        //  $("#brand").text(product.brand);
                       
 
                         //   for(let i = 0; len=items.length, i < len; i++){
@@ -318,16 +317,11 @@
                         //       $ ("#brand").text(items[i].brand);
                         //   }
                          
-
-
                             // $("#brand").text(products.data[i]);    
                             //  $("#brand").text(products.data[0].brand).text(products.data[0].idbase_sku);
 
 
                             //  console.log(products)
-
-
-                        
                         //     console.log(idbase_sku);
                         //    // $("#brand").text($("#brand"+id).text());
                         //     $("#brand").text($("#brand" + idbase_sku).text());
