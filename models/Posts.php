@@ -95,7 +95,7 @@ class Post {
 
            //    $search = " ";
 
-         $searchQuery =  'SELECT * FROM ' . $this->table . ' WHERE brand LIKE "%dell%" OR brand LIKE "%hp%" ';
+         $searchQuery =  'SELECT * FROM ' . $this->table . ' WHERE brand LIKE "%search%"  ';
 
           $stmt = $this->conn->prepare($searchQuery);
 
@@ -125,15 +125,26 @@ class Post {
         //  $this -> cost = $row['cost'];   
         //  $this -> front_picture_icons = $row['front_picture_icons'];   
 
-         
-
-
+        
                
       }
 
       public function pages(){
         //create query
      // $query = 'SELECT * FROM ' . $this->table . ' ';
+
+     $results_per_page = 20;
+
+
+     if (!isset($_GET['page'])){
+        $page = 1;
+   }else{
+       $page = $_GET['page'];
+   }
+
+        $this_page_first_result = ($page -1) * $results_per_page;
+
+        // include_once 'pagination.php';
 
         $query = 'SELECT   base_sku.idbase_sku, base_sku.base_sku, base_sku.brand, base_sku.model, base_sku.form_factor, base_sku.processor_type,
         extended_sku.specification,extended_sku.cost,extended_sku.front_picture_icons, extended_sku.front_picture,
@@ -146,7 +157,7 @@ class Post {
         
         FROM  ' . $this->table . '
         INNER JOIN extended_sku 
-        ON base_sku.base_sku = extended_sku.base_sku LIMIT 0,10';
+        ON base_sku.base_sku = extended_sku.base_sku LIMIT '.$this_page_first_result.' , '.$results_per_page.' ';
         
         
 

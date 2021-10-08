@@ -40,7 +40,7 @@ if ($num > 0){
         'form_factor'=>$form_factor,
         'processor_type' =>$processor_type,
         'specification' => $specification,
-        'cost' => $cost,
+        'cost' => ceil($cost) ,
         'front_picture_icons' => $front_picture_icons,
         'front_picture' => $front_picture,
         'back_picture' => $back_picture,
