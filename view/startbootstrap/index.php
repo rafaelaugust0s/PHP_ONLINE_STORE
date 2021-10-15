@@ -2,7 +2,7 @@
     $products = file_get_contents('http://localhost/php_online_store/api/post/read.php');
     $products = json_decode($products);
     
-;
+
 
     ?>
 
@@ -38,7 +38,9 @@
                 <a class="navbar-brand " href="#!"> CNB Computers<img src= "
                 "></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
@@ -55,15 +57,14 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <!-- <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
-                    </form>
+                    </form> -->
                 </div>
-            </div>
         </nav>
 
         <!-- Header-->
@@ -110,37 +111,44 @@
 </div>
 
         <!-- Search bar-->
-
+   
             <nav class=" navbar-expand-lg">
                         <div class="container-fluid  ">
-                            <form class="d-flex " action= "index.php " method= "get">
-                            <input class="form-control input-lg p-4 m-2  " name = "search " type="search" placeholder="What are you looking for?" aria-label="Search" required>
-                            <button class="btn btn-outline-secondary btn-lg m-2 " type="submit">Search</button>
+                            <form class="d-flex "  method= "get">
+                            <input class="form-control input-lg p-4 m-2  " name = "search" type="search" placeholder="What are you looking for?" aria-label="Search" required>
+                            <button class="btn btn-outline-secondary btn-lg m-2 " type="submit" value="submit-search">Search</button>
                             </form>
-                            </div>
+                            </div> 
                          </div>   
                 
              </nav>
-
              <?php
+
+
              
-                    $items = file_get_contents("http://localhost/PHP_online_store/api/post/search.php?search");
-                // if (isset($_GET['search'])){
+             if(isset($_GET['search'])){
 
-                   
-                // }
+                require ('C:\xampp\htdocs\PHP_online_store\api\post\search.php');
 
-                // if (count($rows) > 0){
+                    // if (count(array($result)) > 0 ) {
+                        
+                    //    foreach ($result as $r){
+                    //     echo $r -> brand;
 
-                //     foreach ($rows as $row){
-                //         print_r($row);
-                //     }
-                // }else { echo "No results found"; 
-                // }
+                    //    }
+                    // }else{
+                    //     echo "Results found";
+                    // }
 
-               
+            }
+
+
+    
+            
+             
 
              ?>
+           
 
 
                 <!-- <div class="text-center text-black">
@@ -258,8 +266,8 @@
                                             <li> Graphics <?php echo $product->graphics_processors ;  ?></li>
                                             <li> Optical Drive <?php echo $product->optical_drive_type ;  ?> </li>
                                             <li> Dimensions<?php echo " (W) ". $product -> width . " (D) ". $product->depth . " (H) ". $product->height ; ?> </li> 
-                                            <li> Weight <?php echo  $product->weight ?></li>
-                                            <li> Warranty <?php echo  $product->warranty ?></li>
+                                            <li> Weight <?php echo  $product->weight; ?></li>
+                                            <li> Warranty <?php echo  $product->warranty ;?></li>
 
 
                                         </ul>
@@ -286,14 +294,6 @@
                     <?php endforeach; ?>
 
 
-
-
-
- 
-
-
-
-
                  <script>
 
             
@@ -308,7 +308,7 @@
 
 
 
-                        //   var products = <?php echo json_encode ($products); ?>
+                       
 
                         // console.log(product);
                         //  console.log(products.data.map(function(items){
@@ -344,20 +344,31 @@
                     
         </section>
 
+          <!-- pagination -->
 
+
+          <?php
+            // include_once ('C:\xampp\htdocs\PHP_online_store\api\post\read.php');
+            
+            // for ($page = 1 ; $page<=$num_of_pages; $page++){
+
+            //       echo '<a href= "index.php?page=' . $page .  ' "> ' . $page . '</a>';
+            //      }
+
+          ?>
                             <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        <a class="page-link"  href=" "  tabindex="-1">Previous</a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
+                        <a class="page-link" href="">Next</a>
                         </li>
                     </ul>
-                    </nav>>
+                    </nav>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; CNB Computers Catalogue 2021</p></div>
@@ -369,7 +380,7 @@
         <!--PHP INTEGRATION -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>?>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
        <!-- modal -->                         
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src= "https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script> -->

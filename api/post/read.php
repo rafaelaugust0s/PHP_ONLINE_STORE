@@ -1,7 +1,7 @@
 <?php
 
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
+// header('Access-Control-Allow-Origin: *');
+// header('Content-Type: application/json');
 
 include_once  '../../config/Database.php';
 include_once  '../../models/Posts.php';
@@ -26,8 +26,27 @@ if ($num > 0){
  $arr = array();
  $arr ['data'] = array();
 
+
+ $results_per_page = 1;
+
+
+ $num_of_pages = ceil($num/$results_per_page);
+
+
+ 
+ if (!isset($_GET['page'])){
+  $page = 1;
+}else{
+ $page = $_GET['page'];
+}
+
+$this_page_first_result = ($page -1) * $results_per_page;
+
+
  while( $row = $result->fetch(PDO::FETCH_ASSOC)){
       extract($row);
+
+      $row['idbase_sku'] .' '. $row['brand'] .' '. $row['model'] .'<br>' ; 
 
       $post_item = array(
 
@@ -86,14 +105,28 @@ if ($num > 0){
    // turn to json
 
    echo json_encode($arr);
+
+
+
+   
 }else{
  //echo json_encode(
 
     array('message' => 'No Posts found'
  );
 
+
+
 }
 
+for ($page = 1 ; $page<=$num_of_pages; $page++){
+
+   '<a href= "read.php?page=' . $page .  ' "> ' . $page . '</a>';
+
+
+
+   
+}
 
 
 
