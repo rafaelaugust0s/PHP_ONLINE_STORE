@@ -35,7 +35,7 @@
                         <!-- Navigation-->
                         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
             <div class="container px-4 px-lg-5 ">
-                <a class="navbar-brand " href="#!"> CNB Computers<img src= "
+                <a class="navbar-brand " href="index.php"> CNB Computers<img src= "
                 "></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
              
@@ -124,11 +124,24 @@
              </nav>
              <?php
 
+                // $results = file_get_contents ('C:\xampp\htdocs\PHP_online_store\api\post\search.php');
 
+                // $results = json_decode($results);
+
+                //     echo $results;
              
              if(isset($_GET['search'])){
+            // $results = $_GET['search'];
+                include_once ('C:\xampp\htdocs\PHP_online_store\api\post\search.php');
 
-                require ('C:\xampp\htdocs\PHP_online_store\api\post\search.php');
+            
+
+                //echo (count(array($result)));
+
+                echo $num;
+
+                
+          
 
                     // if (count(array($result)) > 0 ) {
                         

@@ -112,7 +112,21 @@ class Post {
 
       
 
-        $searchQuery =  'SELECT * FROM ' . $this->table . ' WHERE `brand` LIKE ? ';
+        $searchQuery =  'SELECT base_sku.idbase_sku, base_sku.base_sku, base_sku.brand, base_sku.model, base_sku.form_factor, base_sku.processor_type,
+                                extended_sku.specification,extended_sku.cost, extended_sku.generation, extended_sku.processor_speed, extended_sku.memory_speed,
+                                extended_sku.storage, extended_sku.storage_type, extended_sku.operating_system, extended_sku.memory
+        
+         FROM ' . $this->table . '
+        INNER JOIN extended_sku
+        ON base_sku.base_sku = extended_sku.base_sku
+        WHERE `brand` LIKE ? OR `model` LIKE ? OR `form_factor` LIKE ? OR `processor_type` LIKE ? OR `specification` LIKE ? OR `cost` LIKE ? OR `generation` LIKE ? OR `memory` LIKE ? OR `memory_speed` LIKE ?
+        OR `storage` LIKE ? OR `storage_type` LIKE ? OR `operating_system` LIKE ? OR `memory` LIKE ?
+
+        ';
+        
+        
+
+        
 
         // $searchQuery = 'SELECT   base_sku.idbase_sku, base_sku.base_sku, base_sku.brand, base_sku.model, base_sku.form_factor, base_sku.processor_type,
         //  extended_sku.specification, extended_sku.cost,extended_sku.front_picture_icons, extended_sku.front_picture,
@@ -141,21 +155,25 @@ class Post {
    //execute
 
     $stmt -> execute(["%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
-                    //   "%". $_GET['search']."%",
+                       "%". $_GET['search']."%",
+                      "%". $_GET['search']."%",
+                       "%". $_GET['search']."%",
+                       "%". $_GET['search']."%",
+                       "%". $_GET['search']."%",
+                       "%". $_GET['search']."%",
+                      "%". $_GET['search']."%",
+                       "%". $_GET['search']."%",
+                      "%". $_GET['search']."%",
+                      "%". $_GET['search']."%",
+                      "%". $_GET['search']."%",
+                      "%". $_GET['search']."%",
+
 
                      
                      
                      ] );
+
+                     
     // 
       return $stmt;
 

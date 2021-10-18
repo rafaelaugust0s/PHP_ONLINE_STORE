@@ -42,23 +42,23 @@ $post_array = array(
     'model'=> $model,
     'form_factor'=>$form_factor,
     'processor_type' =>$processor_type,
-    // 'specification' => $specification,
-    // 'cost' => ceil($cost) ,
+     'specification' => $specification,
+     'cost' => ceil($cost) ,
     // 'front_picture_icons' => $front_picture_icons,
     // 'front_picture' => $front_picture,
     // 'back_picture' => $back_picture,
     // 'left_picture' => $left_picture,
     // 'right_picture' => $right_picture,
     // 'back_and_front_picture' => $back_and_front_picture,
-    // 'generation' => $generation,
-    // 'processor_speed' => $processor_speed,
+     'generation' => $generation,
+     'processor_speed' => $processor_speed,
     // 'processor_socket' => $processor_socket,
-    // 'memory' => $memory,
-    // 'memory_speed' => $memory_speed,
+     'memory' => $memory,
+     'memory_speed' => $memory_speed,
     // 'memory_type' => $memory_type,
-    // 'storage' => $storage,
-    // 'storage_type' => $storage_type,
-    // 'operating_system' => $operating_system,
+     'storage' => $storage,
+     'storage_type' => $storage_type,
+     'operating_system' => $operating_system,
     // 'usb_3_0' => $usb_3_0,
     // 'usb_2_0' => $usb_2_0,
     // 'vga_ports' => $vga_ports,
@@ -83,7 +83,11 @@ array_push($arr['data'], $post_array);
 
 //Make json
 
- echo ( json_encode($post_array). $num ." " . 'Results found' );
+$results= $post_array;
+
+ echo $num ." " . "Results found". " for ". $_GET['search']."</br>". json_encode ($results);
+
+ //( $num ." " . "Results found". " for ". $_GET['search']."</br>". json_encode($post_array));
                
         }
     }else{
@@ -92,7 +96,6 @@ array_push($arr['data'], $post_array);
            array( $num ." " . 'Results found'
         ));
 
-    
+ 
  }
 
- 
