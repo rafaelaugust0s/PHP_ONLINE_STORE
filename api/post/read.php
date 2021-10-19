@@ -1,7 +1,7 @@
 <?php
 
-// header('Access-Control-Allow-Origin: *');
-// header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 
 include_once  '../../config/Database.php';
 include_once  '../../models/Posts.php';
@@ -117,17 +117,17 @@ $this_page_first_result = ($page -1) * $results_per_page;
 
 
 
+
 }
 
-for ($page = 1 ; $page<=$num_of_pages; $page++){
 
-   '<a href= "read.php?page=' . $page .  ' "> ' . $page . '</a>';
+// for ($page = 1 ; $page<=$num_of_pages; $page++){
+
+//     '<a href= "read.php?page=' . $page .  ' "> ' . $page . '</a>';
 
 
 
    
-}
-
-
+// }
 
 

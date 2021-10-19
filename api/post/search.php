@@ -83,8 +83,20 @@ array_push($arr['data'], $post_array);
 
 //Make json
 
-$results= $post_array;
+  $results= $post_array;
 
+            // echo json_encode ($results);
+
+
+        // if ($results>0){
+
+        //     foreach ($results as $r){
+
+        //        echo $r ;
+        //     }
+          
+        //   }
+  
  echo $num ." " . "Results found". " for ". $_GET['search']."</br>". json_encode ($results);
 
  //( $num ." " . "Results found". " for ". $_GET['search']."</br>". json_encode($post_array));

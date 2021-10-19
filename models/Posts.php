@@ -124,9 +124,6 @@ class Post {
 
         ';
         
-        
-
-        
 
         // $searchQuery = 'SELECT   base_sku.idbase_sku, base_sku.base_sku, base_sku.brand, base_sku.model, base_sku.form_factor, base_sku.processor_type,
         //  extended_sku.specification, extended_sku.cost,extended_sku.front_picture_icons, extended_sku.front_picture,
@@ -154,7 +151,8 @@ class Post {
 
    //execute
 
-    $stmt -> execute(["%". $_GET['search']."%",
+    $stmt -> execute([
+                        "%". $_GET['search']."%",
                        "%". $_GET['search']."%",
                       "%". $_GET['search']."%",
                        "%". $_GET['search']."%",
@@ -201,8 +199,7 @@ class Post {
 
 
       public function pages(){
-        //create query
-     // $query = 'SELECT * FROM ' . $this->table . ' ';
+    
 
      $results_per_page = 20;
 
@@ -215,7 +212,6 @@ class Post {
 
         $this_page_first_result = ($page -1) * $results_per_page;
 
-        // include_once 'pagination.php';
 
         $query = 'SELECT   base_sku.idbase_sku, base_sku.base_sku, base_sku.brand, base_sku.model, base_sku.form_factor, base_sku.processor_type,
         extended_sku.specification,extended_sku.cost,extended_sku.front_picture_icons, extended_sku.front_picture,
@@ -232,8 +228,13 @@ class Post {
         
         
 
-      
+        // for ($page = 1 ; $page<=$num_of_pages; $page++){
 
+        //     echo '<a href= "read.php?page=' . $page .  ' "> ' . $page . '</a>'
+           
+        // }
+        
+     
         /// prepare statement
         $stmt = $this->conn->prepare($query);
          //execute

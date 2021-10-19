@@ -1,10 +1,9 @@
 <?php 
     $products = file_get_contents('http://localhost/php_online_store/api/post/read.php');
     $products = json_decode($products);
-    
-
-
-    ?>
+  
+   
+?>
 
 
 <!DOCTYPE html>
@@ -128,24 +127,21 @@
 
                 // $results = json_decode($results);
 
-                //     echo $results;
+                // echo $results;
              
-             if(isset($_GET['search'])){
-            // $results = $_GET['search'];
+            if(isset($_GET['search'])){
+            
+               
+
+                   //echo json_encode(count(array($results)));
+
                 include_once ('C:\xampp\htdocs\PHP_online_store\api\post\search.php');
 
-            
+                //$results = ($_GET['search']);
 
-                //echo (count(array($result)));
-
-                echo $num;
-
-                
-          
-
-                    // if (count(array($result)) > 0 ) {
+                    // if (count(array($results)) > 0 ) {
                         
-                    //    foreach ($result as $r){
+                    //    foreach ($results-> data as $r){
                     //     echo $r -> brand;
 
                     //    }
@@ -154,11 +150,6 @@
                     // }
 
             }
-
-
-    
-            
-             
 
              ?>
            
@@ -187,7 +178,7 @@
                             <!-- Product image-->
                  
                             <a href="#" data-bs-toggle="modal" data-bs-target="#reg-modal" id= "<?php echo json_encode($products) ;?> " onClick="showModal(this);" >
-                             <img  class="card-img-top   " src="<?php echo $product-> front_picture_icons ; ?>" alt="..."> </a>
+                             <img  class="card-img-top zoom" src="<?php echo $product-> front_picture_icons ; ?>" alt="..."> </a>
                             
                             <!-- Product details-->
                             <div class="card-body ">
@@ -359,16 +350,17 @@
 
           <!-- pagination -->
 
+ <?php
 
-          <?php
-            // include_once ('C:\xampp\htdocs\PHP_online_store\api\post\read.php');
-            
-            // for ($page = 1 ; $page<=$num_of_pages; $page++){
+        //     require ('../../api/post/read.php');
+        //   echo $num;
+        // //  for ($page = 1 ; $page<=$num_of_pages; $page++){
+     
+        // //      echo '<a href= "index.php?page=' . $page .  ' "> ' . $page . '</a>';
+        // //     }
+     
 
-            //       echo '<a href= "index.php?page=' . $page .  ' "> ' . $page . '</a>';
-            //      }
-
-          ?>
+ ?>
                             <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
