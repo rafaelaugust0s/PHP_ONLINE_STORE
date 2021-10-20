@@ -152,19 +152,19 @@ class Post {
    //execute
 
     $stmt -> execute([
-                        "%". $_GET['search']."%",
-                       "%". $_GET['search']."%",
-                      "%". $_GET['search']."%",
-                       "%". $_GET['search']."%",
-                       "%". $_GET['search']."%",
-                       "%". $_GET['search']."%",
-                       "%". $_GET['search']."%",
-                      "%". $_GET['search']."%",
-                       "%". $_GET['search']."%",
-                      "%". $_GET['search']."%",
-                      "%". $_GET['search']."%",
-                      "%". $_GET['search']."%",
-                      "%". $_GET['search']."%",
+                        "%". $_POST['search']."%",
+                       "%". $_POST['search']."%",
+                      "%". $_POST['search']."%",
+                       "%". $_POST['search']."%",
+                       "%". $_POST['search']."%",
+                       "%". $_POST['search']."%",
+                       "%". $_POST['search']."%",
+                      "%". $_POST['search']."%",
+                       "%". $_POST['search']."%",
+                      "%". $_POST['search']."%",
+                      "%". $_POST['search']."%",
+                      "%". $_POST['search']."%",
+                      "%". $_POST['search']."%",
 
 
                      
