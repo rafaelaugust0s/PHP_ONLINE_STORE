@@ -1,11 +1,14 @@
 <?php 
-    $products = file_get_contents('http://localhost/php_online_store/api/post/read.php');
-    $products = json_decode($products);
-  
-   
+
+        
+// require ('C:\xampp\htdocs\PHP_online_store\api\post\read.php');
+// $products = [];
+$products = file_get_contents('http://localhost/php_online_store/api/post/read.php');
+ $products = json_decode($products);
+//echo json_decode( $products);
+
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,9 +49,9 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                <li><a class="dropdown-item" href="index.php">All Products</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">Towers</a></li>
                                 <li><a class="dropdown-item" href="#!">Desktops</a></li>
@@ -123,71 +126,81 @@
                          </div>   
                 
              </nav>
+             
              <?php
 
 
-
-                // $results = file_get_contents ('C:\xampp\htdocs\PHP_online_store\api\post\search.php');
-
-                // $results = json_decode($results);
-
-                // echo $results;
+        
              
             if(isset($_POST['search'])){
+
+                $results= [];
             
-               
-
-                   //echo json_encode(count(array($results)));
-
-                require ('C:\xampp\htdocs\PHP_online_store\api\post\search.php');
-
-
-                  
-
-                    if (count($results) > 0 ) {
+            require ('C:\xampp\htdocs\PHP_online_store\api\post\search.php') ; 
+             
+           
+         ?>
+           
 
 
-                       // echo json_encode(count($results));
+ <section class="py">
 
-                        //echo json_encode($results);
-                       foreach ($results as $result){
-                        echo 
-                         
-                       " <div class="container px-4 px-lg-5 mt-5">
+            <div class="container px-4 px-lg-5 mt-5">
+
+           <h5 class="fw-bolder"> <?php echo  $num ."  Results found for ".$_POST['search'] ?> </h5>
+                 
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                  
+                <?php foreach ($results as $result):?> 
+
+
                     <div class="col mb-5">
+
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top zoom" src="<?php  echo $result['front_picture_icons'] ;?>" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
-                                <div class="text-center">
+                                <div class="text-left">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder"> json_encode($result['brand'].$result['model'])</h5>
+
+                                    <h5 class="fw-bolder"> <?php echo $result['brand']." ".$result['model']; ?></h5>
+                                    <h5 class="fw-normal"> <?php echo $result['form_factor']; ?></h5>
+                                    <h5 class="fw-normal"> <?php echo $result['processor_type']; ?></h5>
+                                    <h6 class="fw-light"> <?php echo $result['specification']; ?></h6>
+
+
+
+
                                     <!-- Product price-->
-                                    $40.00 - $80.00
+                                    <h5 class="fw-normal"> $ <?php echo $result['cost']; ?></h5> 
+                                    
+
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">More Details</a></div>
                             </div>
                         </div>
-                    </div>";
-                       
-                       
+                    </div>
 
-              
-                       }
-                    }else{
-                        echo "Results found";
-                    }
+                    <?php endforeach; ?> 
+                    
+                    </div>
+                </div>
+            </div>
 
-                }
 
-             ?>
            
+            <?php } ?>
 
+                
+        </section>
+
+
+
+    
 
                 <!-- <div class="text-center text-black">
                     <h1 class="display-4 fw-bolder"> ONLINE STORE</h1>
@@ -196,29 +209,31 @@
             </div>
         </header> -->
 
-
         <!-- Section-->
-        <section class="py-">
+        <section class="py">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-                        <?php foreach($products-> data as $product):
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">      
+                   
+                
+                <?php foreach($products -> data as $product):
                                                 //echo $product;
 
                             ?>
-                    
-                    <div class="col mb-5 ">
+                
+                <div class="col mb-5 ">
+
+                   
                         <div class="card h-100 p-2 ">
                             <!-- Product image-->
                  
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#reg-modal" id= "<?php echo json_encode($products) ;?> " onClick="showModal(<?php echo $product->brand; ?>);" >
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#reg-modal" id= "<?php  ;?> " onClick="showModal(<?php echo $product->brand; ?>);" >
                              <img  class="card-img-top zoom" src="<?php echo $product-> front_picture_icons ; ?>" alt="..."> </a>
                             
                             <!-- Product details-->
                             <div class="card-body ">
                                 <div class="text-left">
                                     <!-- Product brand-->
-                                    <h5 class="fw-bolder"  > <?php echo $product-> brand ." ". $product-> model  ; ?>  </h5>
+                                    <h5 class="fw-bolder"  > <?php echo $product->brand ." ". $product -> model ; ?>  </h5>
                                     <h5 class="fw-normal"> <?php echo $product -> form_factor ; ?>  </h5>
                                     <h5 class="fw-normal"> <?php echo $product-> processor_type ; ?>  </h5>
                                     <p class="fw-normal"> <?php echo $product-> specification ; ?>  </p> 
@@ -246,9 +261,12 @@
 
 
     <!--Modal-->
-                          
+                  
     <div class="modal" id= "reg-modal" tabindex="-1">
-                             
+    <?php
+                    $products = [];
+                    echo (array ($products));
+               ?>      
                              <div class="modal-dialog">
                                
                                 <div class="modal-content">
@@ -343,12 +361,9 @@
                             $("#processor").text(product.id);
 
 
-                            //  $("#brand").text (' <?php echo $product->brand ." ". $product->model; ?> ');
+                         
 
-                            // //  $("#model").text(product.id);
-                              $("#processor").text('<?php echo "Processor ". $product->processor_type  .", ". $product-> generation ." generation, speed ". $product->processor_speed .", socket ". $product->processor_socket ; ?>');
-
-                            //  $("#memory").text( '<?php echo "Memory ". $product->memory .", speed ". $product->memory_speed .", ". $product->memory_type  ; ?> ');
+                          
 
 
                        

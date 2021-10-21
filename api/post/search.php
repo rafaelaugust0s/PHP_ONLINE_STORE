@@ -44,7 +44,7 @@ $post_array = array(
     'processor_type' =>$processor_type,
      'specification' => $specification,
      'cost' => ceil($cost) ,
-    // 'front_picture_icons' => $front_picture_icons,
+     'front_picture_icons' => $front_picture_icons,
     // 'front_picture' => $front_picture,
     // 'back_picture' => $back_picture,
     // 'left_picture' => $left_picture,
@@ -92,7 +92,7 @@ array_push($arr['data'], $post_array);
                
         }
     }else{
-        echo json_encode(
+         json_encode(
        
            array( $num ." " . 'Results found'
         ));

@@ -101,10 +101,14 @@ $this_page_first_result = ($page -1) * $results_per_page;
       //push to DATA
 
       array_push($arr['data'], $post_item); 
+
+       $products[] = $post_item;
+
+      
  }
    // turn to json
 
-   echo json_encode($arr);
+     echo json_encode($arr);
 
 
 
